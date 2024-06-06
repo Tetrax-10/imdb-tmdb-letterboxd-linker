@@ -8,7 +8,7 @@
 // @match        *://*.imdb.com/title/tt*
 // @match        *://*.themoviedb.org/movie/*
 // @match        *://*.themoviedb.org/tv/*
-// @icon         https://tetrax-10.github.io/imdb-tmdb-linker/assets/letterboxd.png
+// @icon         https://tetrax-10.github.io/imdb-tmdb-linker/assets/icon.png
 // @updateURL    https://tetrax-10.github.io/imdb-tmdb-linker/linker.user.js
 // @downloadURL  https://tetrax-10.github.io/imdb-tmdb-linker/linker.user.js
 // @grant        none
@@ -16,6 +16,96 @@
 
 ;(function () {
     const tmdbApi = "YOUR_TMDB_API_KEY"
+
+    const imdbCss = `
+#linker-parent {
+    display: flex;
+    align-self: center;
+}
+#linker-letterboxd-a {
+    align-self: center;
+}
+#linker-letterboxd {
+    display: flex;
+    height: 30px;
+    border-radius: 4px;
+}
+#linker-divider {
+    border-left: 3px solid rgba(232, 230, 227, 0.5);
+    height: 25px;
+    border-radius: 10px;
+    margin-left: 10px;
+    align-self: center;
+}
+#linker-loading {
+    height: 20px;
+    align-self: center;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 40px;
+}
+#linker-tmdb-link {
+    height: 26px;
+    width: 70px;
+    background: #022036 !important;
+    color: #51b4ad !important;
+    border: solid #51b4ad 2px !important;
+    border-radius: 6px;
+    align-self: center;
+    margin-left: 10px;
+    margin-right: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+@media only screen and (max-width: 767px) {
+    #linker-loading {
+        margin-right: 6px;
+    }
+    #linker-tmdb-link {
+        width: 48px;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: smaller;
+    }
+}    
+`
+    const tmdbCss = `
+#linker-parent {
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+#linker-imdb-svg-bg {
+    fill: #c59f00 !important;
+}
+#linker-divider {
+    border-left: 2px solid rgba(232, 230, 227, 0.5);
+    height: 20px;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+#linker-letterboxd {
+    height: 22px;
+    border-radius: 4px;
+}
+#linker-loading {
+    height: 20px;
+    margin-left: 10px;
+}
+#linker-imdb-container {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+#linker-imdb-rating {
+    margin-left: 10px;
+}
+html.k-mobile #linker-parent {
+    margin-top: unset;
+    margin-left: auto;
+    margin-right: auto;
+}    
+`
 
     const imdbUtils = (() => {
         async function waitForElement(selector, timeout = null, nthElement = 1) {
@@ -345,13 +435,11 @@
     const currentURL = window.location.protocol + "//" + window.location.hostname + window.location.pathname
 
     if (/^(https?:\/\/[^.]+\.imdb\.com\/title\/tt[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
-        const imdbCss = `#linker-parent{display:flex;align-self:center}#linker-letterboxd-a{align-self:center}#linker-letterboxd{display:flex;height:30px;border-radius:4px}#linker-divider{border-left:3px solid rgba(232,230,227,.5) !important;height:25px;border-radius:10px;margin-left:10px;align-self:center}#linker-loading{height:20px;align-self:center;text-align:center;margin-left:10px;margin-right:40px}#linker-tmdb-link{height:26px;width:70px;background:#022036 !important;color:#51b4ad !important;border:solid #51b4ad 2px !important;border-radius:6px;align-self:center;margin-left:10px;margin-right:20px;font-weight:bold;text-align:center}@media only screen and (max-width: 767px){#linker-loading{margin-right:6px}#linker-tmdb-link{width:48px;margin-left:10px;margin-right:10px;font-size:smaller}}`
         injectCSS(imdbCss)
         imdb()
         return
     }
     if (/^(https?:\/\/[^.]+\.themoviedb\.org\/(movie|tv)\/\d[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
-        const tmdbCss = `#linker-parent{margin-top:20px;display:flex;align-items:flex-start}#linker-imdb-svg-bg{fill:#c59f00 !important}#linker-divider{border-left:2px solid rgba(232,230,227,.5) !important;height:20px;border-radius:10px;margin-left:10px}#linker-letterboxd{height:22px;border-radius:4px}#linker-loading{height:20px;margin-left:10px}#linker-imdb-container{display:flex;align-items:flex-start;margin-left:10px}#linker-imdb-rating{margin-left:10px}html.k-mobile #linker-parent{margin-top:unset;margin-left:auto;margin-right:auto}`
         injectCSS(tmdbCss)
         tmdb()
         return
