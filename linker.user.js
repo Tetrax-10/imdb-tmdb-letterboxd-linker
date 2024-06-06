@@ -2,12 +2,16 @@
 // @name         IMDb TMDB Linker
 // @description  Opens the corresponding IMDB/TMDB/Letterboxd movie/tv show page in just one click. Also adds the ability to see IMDB ratings on TMDB pages.
 // @author       Tetrax-10
-// @namespace    Tetrax-10
+// @namespace    http://tampermonkey.net/
 // @version      0.1
 // @license      MIT
 // @match        *://*.imdb.com/title/tt*
 // @match        *://*.themoviedb.org/movie/*
 // @match        *://*.themoviedb.org/tv/*
+// @icon         https://tetrax-10.github.io/imdb-tmdb-linker/assets/letterboxd.png
+// @updateURL    https://tetrax-10.github.io/imdb-tmdb-linker/linker.user.js
+// @downloadURL  https://tetrax-10.github.io/imdb-tmdb-linker/linker.user.js
+// @grant        none
 // ==/UserScript==
 
 ;(function () {
