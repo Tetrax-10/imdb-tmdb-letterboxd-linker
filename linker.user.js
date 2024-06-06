@@ -3,7 +3,7 @@
 // @description  Opens the corresponding IMDB/TMDB/Letterboxd movie/tv show page in just one click. Also adds the ability to see IMDB ratings on TMDB pages.
 // @author       Tetrax-10
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      1.0
 // @license      MIT
 // @match        *://*.imdb.com/title/tt*
 // @match        *://*.themoviedb.org/movie/*
@@ -437,11 +437,9 @@ html.k-mobile #linker-parent {
     if (/^(https?:\/\/[^.]+\.imdb\.com\/title\/tt[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
         injectCSS(imdbCss)
         imdb()
-        return
     }
     if (/^(https?:\/\/[^.]+\.themoviedb\.org\/(movie|tv)\/\d[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
         injectCSS(tmdbCss)
         tmdb()
-        return
     }
 })()
