@@ -18,6 +18,7 @@
 // @icon         https://tetrax-10.github.io/imdb-tmdb-linker/assets/icon.png
 // @run-at       document-end
 // @grant        GM_xmlhttpRequest
+// @grant        GM_addStyle
 // ==/UserScript==
 
 ;(function () {
@@ -37,7 +38,7 @@
     border-radius: 4px;
 }
 #linker-divider {
-    border-left: 3px solid rgba(232, 230, 227, 0.5);
+    border-left: 3px solid rgba(232, 230, 227, 0.5) !important;
     height: 25px;
     border-radius: 10px;
     margin-left: 10px;
@@ -85,7 +86,7 @@
     fill: #c59f00 !important;
 }
 #linker-divider {
-    border-left: 2px solid rgba(232, 230, 227, 0.5);
+    border-left: 2px solid rgba(232, 230, 227, 0.5) !important;
     height: 20px;
     border-radius: 10px;
     margin-left: 10px;
@@ -174,12 +175,6 @@ html.k-mobile #linker-parent {
                 },
             })
         })
-    }
-
-    function injectCSS(css) {
-        const style = document.createElement("style")
-        style.appendChild(document.createTextNode(css))
-        document.head.appendChild(style)
     }
 
     const imdbUtils = (() => {
@@ -437,15 +432,15 @@ html.k-mobile #linker-parent {
     const currentURL = window.location.protocol + "//" + window.location.hostname + window.location.pathname
 
     if (/^(https?:\/\/[^.]+\.imdb\.com\/title\/tt[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
-        injectCSS(imdbCss)
+        GM_addStyle(imdbCss)
         imdb()
     }
     if (/^(https?:\/\/[^.]+\.themoviedb\.org\/(movie|tv)\/\d[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
-        injectCSS(tmdbCss)
+        GM_addStyle(tmdbCss)
         tmdb()
     }
     if (/^(https?:\/\/letterboxd\.com\/film\/[^\/]+(?:\/\?.*)?\/?(crew|details|genres)?)$/.test(currentURL)) {
-        injectCSS(letterboxdCss)
+        GM_addStyle(letterboxdCss)
         letterboxd()
     }
 })()
