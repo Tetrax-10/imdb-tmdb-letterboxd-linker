@@ -393,7 +393,7 @@ html.k-mobile #linker-parent {
         const tmdbRes = await tmdbRawRes.json()
         const tmdbData = tmdbRes["movie_results"]?.[0] || tmdbRes["tv_results"]?.[0] || tmdbRes["tv_episode_results"]?.[0]
 
-        if (tmdbData) {
+        if (tmdbData && (await commonUtils.waitForElement("#linker-loading", 10000))) {
             // inject tmdb element and remove loading element
             const tmdbElement = imdbPageUtils.element.createTmdbElement(tmdbData)
             parentContainer.removeChild(loadingElement)
@@ -430,7 +430,7 @@ html.k-mobile #linker-parent {
         const tmdbRes = await tmdbRawRes.json()
         const tmdbData = tmdbRes["movie_results"]?.[0] || tmdbRes["tv_results"]?.[0] || tmdbRes["tv_episode_results"]?.[0] || tmdbRes["person_results"]?.[0]
 
-        if (tmdbData) {
+        if (tmdbData && (await commonUtils.waitForElement("#linker-loading", 10000))) {
             // inject tmdb element and remove loading element
             const tmdbElement = imdbPageUtils.element.createTmdbElement(tmdbData)
             parentContainer.removeChild(loadingElement)
@@ -550,6 +550,7 @@ html.k-mobile #linker-parent {
 
         // inject imdb rating element
         const imdbRatingElement = tmdbTitlePageUtils.element.createImdbRatingElement(imdbRating, imdbNumRating)
+        await commonUtils.waitForElement("#linker-loading", 10000)
         imdbContainer.removeChild(loadingElement)
         if (imdbRatingElement) imdbContainer.appendChild(imdbRatingElement)
     }
@@ -619,6 +620,7 @@ html.k-mobile #linker-parent {
             const [imdbRating, imdbNumRating] = await commonUtils.getImdbRating(imdbId)
 
             // remove loading element
+            await commonUtils.waitForElement("#linker-loading", 10000)
             element.removeChild(loadingElement)
             element.style.display = originalDisplayStyle
 
