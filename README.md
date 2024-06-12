@@ -19,6 +19,7 @@ Opens the corresponding IMDB/TMDB/Letterboxd movie/tv page in just one click. Al
 ### TMDB page
 
 ![Screenshot](https://raw.githubusercontent.com/Tetrax-10/imdb-tmdb-linker/main/screenshot/tmdb.png)
+![Screenshot](https://raw.githubusercontent.com/Tetrax-10/imdb-tmdb-linker/main/screenshot/tmdbPerson.png)
 
 ### Letterboxd page
 
