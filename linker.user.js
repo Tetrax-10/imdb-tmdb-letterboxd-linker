@@ -3,7 +3,7 @@
 // @description  Opens the corresponding IMDB/TMDB/Letterboxd movie/tv page in just one click. Also adds the ability to see IMDB ratings on TMDB and Letterboxd pages.
 // @author       Tetrax-10
 // @namespace    https://github.com/Tetrax-10/imdb-tmdb-linker
-// @version      1.2
+// @version      1.3
 // @license      MIT
 // @match        *://*.imdb.com/title/tt*
 // @match        *://*.imdb.com/name/nm*
@@ -51,6 +51,13 @@
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1001;
+    font-family: Source Sans Pro,Arial,sans-serif;
+	font-feature-settings: normal;
+	font-variation-settings: normal;
+	font-size: 100%;
+	font-weight: inherit;
+	line-height: 1.5;
+    letter-spacing: normal;
 }
 #linker-settings-popup input {
     color: #cfcfcf;
