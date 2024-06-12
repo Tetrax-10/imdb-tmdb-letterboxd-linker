@@ -24,7 +24,7 @@
 // ==/UserScript==
 
 ;(function () {
-    const tmdbApi = "YOUR_TMDB_API_KEY"
+    const TMDB_API_KEY = "YOUR_TMDB_API_KEY"
 
     const imdbPageCss = `
 #linker-parent {
@@ -122,7 +122,7 @@ html.k-mobile #linker-parent {
 }
 `
 
-    const letterboxdCss = `
+    const letterboxdTitlePageCss = `
 #linker-loading {
     height: 14px;
     margin-left: 4px;
@@ -312,7 +312,7 @@ html.k-mobile #linker-parent {
         })
 
         // fetch tmdb id
-        const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${tmdbApi}&external_source=imdb_id`)
+        const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${TMDB_API_KEY}&external_source=imdb_id`)
         const tmdbRes = await tmdbRawRes.json()
         const tmdbData = tmdbRes["movie_results"]?.[0] || tmdbRes["tv_results"]?.[0] || tmdbRes["tv_episode_results"]?.[0]
 
@@ -347,7 +347,7 @@ html.k-mobile #linker-parent {
         })
 
         // fetch tmdb id
-        const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${tmdbApi}&external_source=imdb_id`)
+        const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${TMDB_API_KEY}&external_source=imdb_id`)
         const tmdbRes = await tmdbRawRes.json()
         const tmdbData = tmdbRes["movie_results"]?.[0] || tmdbRes["tv_results"]?.[0] || tmdbRes["tv_episode_results"]?.[0] || tmdbRes["person_results"]?.[0]
 
@@ -446,7 +446,7 @@ html.k-mobile #linker-parent {
         })
 
         // fetch imdb id
-        const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/${path[1]}/${tmdbId}/external_ids?api_key=${tmdbApi}`)
+        const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/${path[1]}/${tmdbId}/external_ids?api_key=${TMDB_API_KEY}`)
         const tmdbRes = await tmdbRawRes.json()
         const imdbId = tmdbRes["imdb_id"] || null
 
@@ -506,7 +506,7 @@ html.k-mobile #linker-parent {
         const tmdbId = path[2].match(/\d+/)?.[0] || null
 
         // fetch imdb id
-        const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/${path[1]}/${tmdbId}/external_ids?api_key=${tmdbApi}`)
+        const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/${path[1]}/${tmdbId}/external_ids?api_key=${TMDB_API_KEY}`)
         const tmdbRes = await tmdbRawRes.json()
         const imdbId = tmdbRes["imdb_id"] || null
 
@@ -563,7 +563,7 @@ html.k-mobile #linker-parent {
         tmdbPersonPageInjector()
     } else if (/^(https?:\/\/letterboxd\.com\/film\/[^\/]+(?:\/\?.*)?\/?(crew|details|genres)?)$/.test(currentURL)) {
         // Letterboxd title page
-        GM_addStyle(letterboxdCss)
+        GM_addStyle(letterboxdTitlePageCss)
         letterboxdTitlePageInjector()
     }
 })()
