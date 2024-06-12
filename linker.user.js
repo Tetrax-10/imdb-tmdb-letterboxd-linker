@@ -381,9 +381,12 @@ html.k-mobile #linker-parent {
         commonUtils.waitForElement("div:has( > div[data-testid='hero-rating-bar__user-rating'])", 10000, isMobile ? 2 : 1).then((element) => {
             element.insertBefore(parentContainer, element.firstChild)
             parentContainer.appendChild(letterboxdElement)
+            if (!TMDB_API_KEY) return
             parentContainer.appendChild(dividerElement)
             parentContainer.appendChild(loadingElement)
         })
+
+        if (!TMDB_API_KEY) return
 
         // fetch tmdb id
         const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${TMDB_API_KEY}&external_source=imdb_id`)
@@ -403,6 +406,8 @@ html.k-mobile #linker-parent {
     }
 
     async function imdbPersonPageInjector() {
+        if (!TMDB_API_KEY) return
+
         // check is mobile
         const isMobile = location.host.includes("m.imdb")
 
@@ -514,10 +519,13 @@ html.k-mobile #linker-parent {
             }
 
             parentContainer.appendChild(letterboxdElement)
+            if (!TMDB_API_KEY) return
             parentContainer.appendChild(dividerElement)
             parentContainer.appendChild(imdbContainer)
             imdbContainer.appendChild(loadingElement)
         })
+
+        if (!TMDB_API_KEY) return
 
         // fetch imdb id
         const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/${path[1]}/${tmdbId}/external_ids?api_key=${TMDB_API_KEY}`)
@@ -575,6 +583,8 @@ html.k-mobile #linker-parent {
     })()
 
     async function tmdbPersonPageInjector() {
+        if (!TMDB_API_KEY) return
+
         // extract tmdb id from url
         const path = location.pathname.split("/")
         const tmdbId = path[2].match(/\d+/)?.[0] || null
