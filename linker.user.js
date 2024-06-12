@@ -21,10 +21,84 @@
 // @run-at       document-start
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_registerMenuCommand
 // ==/UserScript==
 
 ;(function () {
-    const TMDB_API_KEY = "YOUR_TMDB_API_KEY"
+    const TMDB_API_KEY = GM_getValue("TMDB_API_KEY", null)
+
+    GM_registerMenuCommand("Settings", showPopup)
+
+    function showPopup() {
+        GM_addStyle(`
+#linker-settings-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+#linker-settings-popup {
+    background-color: #20242c;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+#linker-settings-popup input {
+    color: #cfcfcf;
+}
+#linker-settings-popup input {
+    background-color: #20242c;
+    border: 1px solid #cfcfcf;
+    color: #cfcfcf;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+`)
+
+        // Create overlay
+        const overlay = document.createElement("div")
+        overlay.id = "linker-settings-overlay"
+        overlay.onclick = (e) => {
+            if (e.target === overlay) closePopup(overlay)
+        }
+
+        // popup element
+        const popup = document.createElement("div")
+        popup.id = "linker-settings-popup"
+
+        // popup content
+        const label = document.createElement("label")
+        label.textContent = "Enter your TMDB API key:"
+
+        // input element
+        const input = document.createElement("input")
+        input.type = "text"
+        input.value = GM_getValue("TMDB_API_KEY", "")
+        input.oninput = (e) => GM_setValue("TMDB_API_KEY", e.target.value)
+
+        // inject popup
+        popup.appendChild(label)
+        popup.appendChild(input)
+        overlay.appendChild(popup)
+        document.body.appendChild(overlay)
+
+        input.focus()
+    }
+
+    function closePopup(overlay) {
+        document.body.removeChild(overlay)
+    }
 
     const imdbPageCss = `
 #linker-parent {
