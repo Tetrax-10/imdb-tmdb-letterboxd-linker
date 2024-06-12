@@ -140,7 +140,7 @@ html.k-mobile #linker-parent {
             const data = navigator.userAgent || navigator.vendor || window.opera
 
             // prettier-ignore
-            if (window.navigator?.userAgentData?.mobile || /Mobi/i.test(window.navigator?.userAgent) || window.navigator?.maxTouchPoints || 'ontouchstart' in window.document.documentElement || /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(data) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(data.substr(0, 4))) {
+            if (navigator.userAgentData?.mobile || /Mobi/i.test(navigator.userAgent) || navigator.maxTouchPoints || 'ontouchstart' in document.documentElement || /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(data) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(data.substr(0, 4))) {
                 return true
             } else {
                 return false
@@ -203,24 +203,24 @@ html.k-mobile #linker-parent {
                         resolve([rating, numRating])
                     },
                     onerror: function (error) {
-                        console.error("Request failed:", error)
+                        console.error(`Can't scrape IMDb: ${imdbId}`, error)
                     },
                 })
             })
         }
 
-        function createDivider() {
+        function createDividerElement() {
             const divider = document.createElement("div")
             divider.id = "linker-divider"
 
             return divider
         }
 
-        function createParentElement() {
-            const parentElement = document.createElement("div")
-            parentElement.id = "linker-parent"
+        function createParentContainer() {
+            const parentContainer = document.createElement("div")
+            parentContainer.id = "linker-parent"
 
-            return parentElement
+            return parentContainer
         }
 
         function createLoadingElement() {
@@ -241,12 +241,11 @@ html.k-mobile #linker-parent {
             },
             rawImage: {
                 letterboxd: letterboxdPng,
-                loading: loadingGif,
             },
             element: {
-                divider: createDivider,
-                parent: createParentElement,
-                loading: createLoadingElement,
+                createDividerElement: createDividerElement,
+                createParentContainer: createParentContainer,
+                createLoadingElement: createLoadingElement,
             },
         }
     })()
@@ -267,7 +266,7 @@ html.k-mobile #linker-parent {
             return linkElement
         }
 
-        function createTmdbButtonElement(tmdbData) {
+        function createTmdbElement(tmdbData) {
             const linkElement = document.createElement("a")
             linkElement.id = "linker-tmdb-link"
             linkElement.target = "_blank"
@@ -284,13 +283,13 @@ html.k-mobile #linker-parent {
 
         return {
             element: {
-                letterboxd: createLetterboxdElement,
-                tmdbButton: createTmdbButtonElement,
+                createLetterboxdElement: createLetterboxdElement,
+                createTmdbElement: createTmdbElement,
             },
         }
     })()
 
-    async function imdbPageInjector() {
+    async function imdbTitlePageInjector() {
         // check is mobile
         const isMobile = location.host.includes("m.imdb")
 
@@ -298,29 +297,34 @@ html.k-mobile #linker-parent {
         const path = location.pathname.split("/")
         const imdbId = path[2] || null
 
-        const parentElement = commonUtils.element.parent()
-        const letterboxdElement = imdbPageUtils.element.letterboxd(imdbId)
-        const dividerElement = commonUtils.element.divider()
-        const loadingElement = commonUtils.element.loading()
+        // create elements that doesn't require any API calls
+        const parentContainer = commonUtils.element.createParentContainer()
+        const letterboxdElement = imdbPageUtils.element.createLetterboxdElement(imdbId)
+        const dividerElement = commonUtils.element.createDividerElement()
+        const loadingElement = commonUtils.element.createLoadingElement()
 
+        // inject elements that doesn't require any API calls
         commonUtils.waitForElement("div:has( > div[data-testid='hero-rating-bar__user-rating'])", 10000, isMobile ? 2 : 1).then((element) => {
-            element.insertBefore(parentElement, element.firstChild)
-            parentElement.appendChild(letterboxdElement)
-            parentElement.appendChild(dividerElement)
-            parentElement.appendChild(loadingElement)
+            element.insertBefore(parentContainer, element.firstChild)
+            parentContainer.appendChild(letterboxdElement)
+            parentContainer.appendChild(dividerElement)
+            parentContainer.appendChild(loadingElement)
         })
 
+        // fetch tmdb id
         const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${tmdbApi}&external_source=imdb_id`)
         const tmdbRes = await tmdbRawRes.json()
         const tmdbData = tmdbRes["movie_results"]?.[0] || tmdbRes["tv_results"]?.[0] || tmdbRes["tv_episode_results"]?.[0]
 
         if (tmdbData) {
-            const imdbElement = imdbPageUtils.element.tmdbButton(tmdbData)
-            parentElement.removeChild(loadingElement)
-            parentElement.appendChild(imdbElement)
+            // inject tmdb element and remove loading element
+            const tmdbElement = imdbPageUtils.element.createTmdbElement(tmdbData)
+            parentContainer.removeChild(loadingElement)
+            parentContainer.appendChild(tmdbElement)
         } else {
-            parentElement.removeChild(dividerElement)
-            parentElement.removeChild(loadingElement)
+            // if no tmdb id then remove divider and loading element
+            parentContainer.removeChild(dividerElement)
+            parentContainer.removeChild(loadingElement)
         }
     }
 
@@ -332,42 +336,45 @@ html.k-mobile #linker-parent {
         const path = location.pathname.split("/")
         const imdbId = path[2] || null
 
-        const parentElement = commonUtils.element.parent()
-        const loadingElement = commonUtils.element.loading()
+        // create parent and loading element
+        const parentContainer = commonUtils.element.createParentContainer()
+        const loadingElement = commonUtils.element.createLoadingElement()
 
-        // inject loading element
+        // inject parent and loading element
         commonUtils.waitForElement("div:has( > .starmeter-logo)", 10000, isMobile ? 2 : 1).then((element) => {
-            element.insertBefore(parentElement, element.firstChild)
-            parentElement.appendChild(loadingElement)
+            element.insertBefore(parentContainer, element.firstChild)
+            parentContainer.appendChild(loadingElement)
         })
 
-        // fetch tmdb data
+        // fetch tmdb id
         const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${tmdbApi}&external_source=imdb_id`)
         const tmdbRes = await tmdbRawRes.json()
         const tmdbData = tmdbRes["movie_results"]?.[0] || tmdbRes["tv_results"]?.[0] || tmdbRes["tv_episode_results"]?.[0] || tmdbRes["person_results"]?.[0]
 
         if (tmdbData) {
-            const imdbElement = imdbPageUtils.element.tmdbButton(tmdbData)
-            parentElement.removeChild(loadingElement)
-            parentElement.appendChild(imdbElement)
+            // inject tmdb element and remove loading element
+            const tmdbElement = imdbPageUtils.element.createTmdbElement(tmdbData)
+            parentContainer.removeChild(loadingElement)
+            parentContainer.appendChild(tmdbElement)
         } else {
-            parentElement.removeChild(loadingElement)
+            // if no tmdb id then remove loading element
+            parentContainer.removeChild(loadingElement)
         }
     }
 
     const tmdbTitlePageUtils = (() => {
         function createLetterboxdElement(tmdbId, type) {
-            const letterboxdElement = document.createElement("a")
-            letterboxdElement.href = `https://letterboxd.com/tmdb/${tmdbId}/${type === "tv" ? "tv" : ""}`
-            letterboxdElement.target = "_blank"
+            const linkElement = document.createElement("a")
+            linkElement.href = `https://letterboxd.com/tmdb/${tmdbId}/${type === "tv" ? "tv" : ""}`
+            linkElement.target = "_blank"
 
-            const letterboxdImage = document.createElement("img")
-            letterboxdImage.id = "linker-letterboxd"
-            letterboxdImage.src = commonUtils.rawImage.letterboxd
+            const imageElement = document.createElement("img")
+            imageElement.id = "linker-letterboxd"
+            imageElement.src = commonUtils.rawImage.letterboxd
 
-            letterboxdElement.appendChild(letterboxdImage)
+            linkElement.appendChild(imageElement)
 
-            return letterboxdElement
+            return linkElement
         }
 
         function createImdbContainer() {
@@ -377,13 +384,13 @@ html.k-mobile #linker-parent {
             return imdbContainer
         }
 
-        function createImdbLinkElement(imdbId) {
-            const link = document.createElement("a")
-            link.href = `https://imdb.com/title/${imdbId}`
-            link.target = "_blank"
-            link.innerHTML = commonUtils.svg.ImdbSvg
+        function createImdbElement(imdbId) {
+            const linkElement = document.createElement("a")
+            linkElement.href = `https://imdb.com/title/${imdbId}`
+            linkElement.target = "_blank"
+            linkElement.innerHTML = commonUtils.svg.ImdbSvg
 
-            return link
+            return linkElement
         }
 
         function createImdbRatingElement(rating, numRatings) {
@@ -402,10 +409,10 @@ html.k-mobile #linker-parent {
 
         return {
             element: {
-                letterboxd: createLetterboxdElement,
-                imdbContainer: createImdbContainer,
-                imdbLink: createImdbLinkElement,
-                imdbRating: createImdbRatingElement,
+                createLetterboxdElement: createLetterboxdElement,
+                createImdbContainer: createImdbContainer,
+                createImdbElement: createImdbElement,
+                createImdbRatingElement: createImdbRatingElement,
             },
         }
     })()
@@ -419,62 +426,54 @@ html.k-mobile #linker-parent {
         const tmdbId = path[2].match(/\d+/)?.[0] || null
 
         // inject elements that doesn't require any API calls
-        const parentElement = commonUtils.element.parent()
-        const letterboxdElement = tmdbTitlePageUtils.element.letterboxd(tmdbId, path[1])
-        const divider = commonUtils.element.divider()
-        const imdbContainer = tmdbTitlePageUtils.element.imdbContainer()
-        const loadingElement = commonUtils.element.loading()
+        const parentContainer = commonUtils.element.createParentContainer()
+        const letterboxdElement = tmdbTitlePageUtils.element.createLetterboxdElement(tmdbId, path[1])
+        const dividerElement = commonUtils.element.createDividerElement()
+        const imdbContainer = tmdbTitlePageUtils.element.createImdbContainer()
+        const loadingElement = commonUtils.element.createLoadingElement()
 
         commonUtils.waitForElement(`.header.poster${isMobile ? " > .title" : ""}`, 10000).then((element) => {
             if (isMobile) {
-                element.insertBefore(parentElement, element?.firstChild?.nextSibling?.nextSibling)
+                element.insertBefore(parentContainer, element?.firstChild?.nextSibling?.nextSibling)
             } else {
-                element.appendChild(parentElement)
+                element.appendChild(parentContainer)
             }
 
-            parentElement.appendChild(letterboxdElement)
-            parentElement.appendChild(divider)
-            parentElement.appendChild(imdbContainer)
+            parentContainer.appendChild(letterboxdElement)
+            parentContainer.appendChild(dividerElement)
+            parentContainer.appendChild(imdbContainer)
             imdbContainer.appendChild(loadingElement)
         })
 
-        // fetch external ids
+        // fetch imdb id
         const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/${path[1]}/${tmdbId}/external_ids?api_key=${tmdbApi}`)
-
-        // exit on error status
-        if (tmdbRawRes.status !== 200) {
-            console.error("can't fetch IMDb Id for title: " + tmdbId)
-            return
-        }
-
-        // extract imdb id
         const tmdbRes = await tmdbRawRes.json()
         const imdbId = tmdbRes["imdb_id"] || null
 
         // exit if no IMDb Id found
         if (!imdbId) {
-            parentElement.removeChild(divider)
-            parentElement.removeChild(imdbContainer)
+            parentContainer.removeChild(dividerElement)
+            parentContainer.removeChild(imdbContainer)
             return
         }
 
-        // inject imdb link icon
-        const imdbLink = tmdbTitlePageUtils.element.imdbLink(imdbId)
+        // inject imdb element
+        const imdbElement = tmdbTitlePageUtils.element.createImdbElement(imdbId)
         commonUtils.waitForElement(`.header.poster${isMobile ? " > .title" : ""}`, 10000).then(() => {
-            imdbContainer.insertBefore(imdbLink, loadingElement)
+            imdbContainer.insertBefore(imdbElement, loadingElement)
         })
 
         // scrape IMDb ratings
         const [imdbRating, imdbNumRating] = await commonUtils.getImdbRating(imdbId)
 
         // inject imdb rating element
-        const imdbRatingElement = tmdbTitlePageUtils.element.imdbRating(imdbRating, imdbNumRating)
+        const imdbRatingElement = tmdbTitlePageUtils.element.createImdbRatingElement(imdbRating, imdbNumRating)
         imdbContainer.removeChild(loadingElement)
         if (imdbRatingElement) imdbContainer.appendChild(imdbRatingElement)
     }
 
     const tmdbPersonPageUtils = (() => {
-        function createImdbLinkElement(imdbId) {
+        function createImdbElement(imdbId) {
             const linkContainer = document.createElement("div")
 
             const linkElement = document.createElement("a")
@@ -496,7 +495,7 @@ html.k-mobile #linker-parent {
 
         return {
             element: {
-                imdbLink: createImdbLinkElement,
+                createImdbElement: createImdbElement,
             },
         }
     })()
@@ -506,35 +505,28 @@ html.k-mobile #linker-parent {
         const path = location.pathname.split("/")
         const tmdbId = path[2].match(/\d+/)?.[0] || null
 
-        // fetch external ids
+        // fetch imdb id
         const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/${path[1]}/${tmdbId}/external_ids?api_key=${tmdbApi}`)
-
-        if (tmdbRawRes.status !== 200) {
-            console.error("can't fetch IMDb Id for person: " + tmdbId)
-            return
-        }
-
-        // extract imdb id
         const tmdbRes = await tmdbRawRes.json()
         const imdbId = tmdbRes["imdb_id"] || null
 
-        // UI
+        // inject imdb element
         if (imdbId) {
-            const imdbLinkElement = tmdbPersonPageUtils.element.imdbLink(imdbId)
+            const imdbElement = tmdbPersonPageUtils.element.createImdbElement(imdbId)
 
             commonUtils.waitForElement(`.social_links`, 10000).then((element) => {
-                element.insertBefore(imdbLinkElement, element.firstChild)
+                element.insertBefore(imdbElement, element.firstChild)
             })
         }
     }
 
-    function letterboxdPageInjector() {
+    function letterboxdTitlePageInjector() {
         commonUtils.waitForElement(`.micro-button.track-event[data-track-action="IMDb"]`, 10000).then(async (element) => {
             // preserve original display style
             const originalDisplayStyle = element.style.display
 
-            // add loading element
-            const loadingElement = commonUtils.element.loading()
+            // inject loading element
+            const loadingElement = commonUtils.element.createLoadingElement()
             element.style.display = "inline-flex"
             element.appendChild(loadingElement)
 
@@ -546,27 +538,32 @@ html.k-mobile #linker-parent {
             element.removeChild(loadingElement)
             element.style.display = originalDisplayStyle
 
-            // update IMDb button
+            // update imdb button
             element.innerText = `IMDB${imdbRating ? ` | ${imdbRating}` : ""}${imdbNumRating !== undefined ? ` (${imdbNumRating})` : ""}`
         })
     }
 
-    const currentURL = window.location.protocol + "//" + window.location.hostname + window.location.pathname
+    const currentURL = location.protocol + "//" + location.hostname + location.pathname
 
     if (/^(https?:\/\/[^.]+\.imdb\.com\/title\/tt[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
+        // IMDb title page
         GM_addStyle(imdbPageCss)
-        imdbPageInjector()
+        imdbTitlePageInjector()
     } else if (/^(https?:\/\/[^.]+\.imdb\.com\/name\/nm[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
+        // IMDb person page
         GM_addStyle(imdbPageCss)
         imdbPersonPageInjector()
     } else if (/^(https?:\/\/[^.]+\.themoviedb\.org\/(movie|tv)\/\d[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
+        // TMDB title page
         GM_addStyle(tmdbTitlePageCss)
         tmdbTitlePageInjector()
     } else if (/^(https?:\/\/[^.]+\.themoviedb\.org\/person\/\d[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
+        // TMDB person page
         GM_addStyle(tmdbPersonPageCss)
         tmdbPersonPageInjector()
     } else if (/^(https?:\/\/letterboxd\.com\/film\/[^\/]+(?:\/\?.*)?\/?(crew|details|genres)?)$/.test(currentURL)) {
+        // Letterboxd title page
         GM_addStyle(letterboxdCss)
-        letterboxdPageInjector()
+        letterboxdTitlePageInjector()
     }
 })()
