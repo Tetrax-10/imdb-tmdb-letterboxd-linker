@@ -1,6 +1,6 @@
-# imdb-tmdb-linker
+# IMDb TMDB Linker
 
-Opens the corresponding IMDB/TMDB/Letterboxd movie/tv page in just one click. Also adds the ability to see IMDB ratings on TMDB and Letterboxd pages.
+Opens the corresponding IMDb, TMDB, or Letterboxd page for movies, TV shows and people with a single click. Additionally, it also displays IMDb ratings on both TMDB and Letterboxd pages.
 
 ## Installation
 
