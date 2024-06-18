@@ -26,7 +26,7 @@
 // @grant        GM_registerMenuCommand
 // ==/UserScript==
 
-;(function () {
+;(() => {
     const TMDB_API_KEY = GM_getValue("TMDB_API_KEY", null)
 
     GM_registerMenuCommand("Settings", showPopup)
@@ -552,7 +552,8 @@ html.k-mobile #linker-parent {
 
         // inject imdb element
         const imdbElement = tmdbTitlePageUtils.element.createImdbElement(imdbId)
-        commonUtils.waitForElement(`.header.poster${isMobile ? " > .title" : ""}`, 10000).then(() => {
+        commonUtils.waitForElement(`.header.poster${isMobile ? " > .title" : ""}`, 10000).then(async () => {
+            await commonUtils.waitForElement("#linker-imdb-container", 5000)
             imdbContainer.insertBefore(imdbElement, loadingElement)
         })
 
