@@ -3,7 +3,7 @@
 // @description  Opens the corresponding IMDb, TMDB, or Letterboxd page for movies, TV shows and people with a single click. Additionally, it also displays IMDb ratings on both TMDB and Letterboxd pages.
 // @author       Tetrax-10
 // @namespace    https://github.com/Tetrax-10/imdb-tmdb-linker
-// @version      1.3
+// @version      1.4
 // @license      MIT
 // @match        *://*.imdb.com/title/tt*
 // @match        *://*.imdb.com/name/nm*
@@ -395,6 +395,23 @@ html.k-mobile #linker-parent {
             })
         })
 
+        // inject parent element if not present
+        function injectParentElement() {
+            if (document.querySelector("#linker-parent")) return
+
+            commonUtils.waitForElement("div:has( > div[data-testid='hero-rating-bar__user-rating'])", 10000, isMobile ? 2 : 1).then((element) => {
+                element.insertBefore(parentContainer, element.firstChild)
+            })
+        }
+
+        // inject the parent element every 100ms. Since IMDb sometimes re-renders its components, the parent element may occasionally be removed.
+        const intervalId = setInterval(injectParentElement, 100)
+
+        // Stop the interval after 5 seconds
+        setTimeout(() => {
+            clearInterval(intervalId)
+        }, 5000)
+
         if (!TMDB_API_KEY) return
 
         // fetch tmdb id
@@ -435,6 +452,23 @@ html.k-mobile #linker-parent {
                 parentContainer.appendChild(loadingElement)
             })
         })
+
+        // inject parent element if not present
+        function injectParentElement() {
+            if (document.querySelector("#linker-parent")) return
+
+            commonUtils.waitForElement("div:has( > .starmeter-logo)", 10000, isMobile ? 2 : 1).then((element) => {
+                element.insertBefore(parentContainer, element.firstChild)
+            })
+        }
+
+        // inject the parent element every 100ms. Since IMDb sometimes re-renders its components, the parent element may occasionally be removed.
+        const intervalId = setInterval(injectParentElement, 100)
+
+        // Stop the interval after 5 seconds
+        setTimeout(() => {
+            clearInterval(intervalId)
+        }, 5000)
 
         // fetch tmdb id
         const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${TMDB_API_KEY}&external_source=imdb_id`)
