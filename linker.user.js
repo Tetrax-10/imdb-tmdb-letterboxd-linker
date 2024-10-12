@@ -386,10 +386,26 @@ html.k-mobile #linker-parent {
             return linkElement
         }
 
+        function mirrorElements(parentContainer, isMobile) {
+            const observer = new MutationObserver(() => {
+                const clonedContainer = parentContainer?.cloneNode(true)
+
+                commonUtils.waitForElement("div:has( > div[data-testid='hero-rating-bar__user-rating'])", 10000, !isMobile ? 2 : 1).then((element) => {
+                    for (const parentEle of element.querySelectorAll("#linker-parent")) {
+                        parentEle?.remove()
+                    }
+                    element.insertBefore(clonedContainer, element.firstChild)
+                })
+            })
+
+            observer.observe(parentContainer, { childList: true, subtree: true, attributes: true })
+        }
+
         return {
             element: {
                 createLetterboxdElement: createLetterboxdElement,
                 createTmdbElement: createTmdbElement,
+                mirrorElements: mirrorElements,
             },
         }
     })()
@@ -412,6 +428,8 @@ html.k-mobile #linker-parent {
         window.addEventListener("load", () => {
             commonUtils.waitForElement("div:has( > div[data-testid='hero-rating-bar__user-rating'])", 10000, isMobile ? 2 : 1).then((element) => {
                 element.insertBefore(parentContainer, element.firstChild)
+                imdbPageUtils.element.mirrorElements(parentContainer, isMobile)
+
                 parentContainer.appendChild(letterboxdElement)
                 parentContainer.appendChild(dividerElement)
                 if (!TMDB_API_KEY) return
@@ -421,11 +439,14 @@ html.k-mobile #linker-parent {
 
         // inject parent element if not present
         function injectParentElement() {
-            if (document.querySelector("#linker-parent")) return
-
-            commonUtils.waitForElement("div:has( > div[data-testid='hero-rating-bar__user-rating'])", 10000, isMobile ? 2 : 1).then((element) => {
-                element.insertBefore(parentContainer, element.firstChild)
-            })
+            if (!document.querySelectorAll("#linker-parent")[isMobile ? 2 : 1]) {
+                commonUtils.waitForElement("div:has( > div[data-testid='hero-rating-bar__user-rating'])", 10000, isMobile ? 2 : 1).then((element) => {
+                    element.insertBefore(parentContainer, element.firstChild)
+                })
+            }
+            if (!document.querySelectorAll("#linker-parent")[!isMobile ? 2 : 1]) {
+                imdbPageUtils.element.mirrorElements(parentContainer, isMobile)
+            }
         }
 
         // inject the parent element every 100ms. Since IMDb sometimes re-renders its components, the parent element may occasionally be removed.
@@ -478,17 +499,22 @@ html.k-mobile #linker-parent {
         window.addEventListener("load", () => {
             commonUtils.waitForElement("div:has( > .starmeter-logo)", 10000, isMobile ? 2 : 1).then((element) => {
                 element.insertBefore(parentContainer, element.firstChild)
+                imdbPageUtils.element.mirrorElements(parentContainer, isMobile)
+
                 parentContainer.appendChild(loadingElement)
             })
         })
 
         // inject parent element if not present
         function injectParentElement() {
-            if (document.querySelector("#linker-parent")) return
-
-            commonUtils.waitForElement("div:has( > .starmeter-logo)", 10000, isMobile ? 2 : 1).then((element) => {
-                element.insertBefore(parentContainer, element.firstChild)
-            })
+            if (!document.querySelector("#linker-parent")) {
+                commonUtils.waitForElement("div:has( > .starmeter-logo)", 10000, isMobile ? 2 : 1).then((element) => {
+                    element.insertBefore(parentContainer, element.firstChild)
+                })
+            }
+            if (!document.querySelectorAll("#linker-parent")[!isMobile ? 2 : 1]) {
+                imdbPageUtils.element.mirrorElements(parentContainer, isMobile)
+            }
         }
 
         // inject the parent element every 100ms. Since IMDb sometimes re-renders its components, the parent element may occasionally be removed.
