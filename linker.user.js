@@ -27,7 +27,7 @@
 // ==/UserScript==
 
 ;(() => {
-    const TMDB_API_KEY = GM_getValue("TMDB_API_KEY", null)
+    const TMDB_API_KEY = GM_getValue("TMDB_API_KEY", null)?.trim()
 
     GM_registerMenuCommand("Settings", showPopup)
 
@@ -103,7 +103,7 @@
         const input = document.createElement("input")
         input.type = "text"
         input.value = GM_getValue("TMDB_API_KEY", "")
-        input.oninput = (e) => GM_setValue("TMDB_API_KEY", e.target.value)
+        input.oninput = (e) => GM_setValue("TMDB_API_KEY", e.target.value?.trim())
 
         // inject popup
         popup.appendChild(label)
