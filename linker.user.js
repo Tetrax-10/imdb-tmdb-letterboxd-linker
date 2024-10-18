@@ -11,6 +11,7 @@
 // @match        *://*.themoviedb.org/tv/*
 // @match        *://*.themoviedb.org/person/*
 // @match        *://*.letterboxd.com/film/*
+// @include      /^https?:\/\/(?:www\.)?letterboxd\.com\/(actor|additional-photography|camera-operator|cinematography|composer|costume-design|director|editor|executive-producer|hairstyling|makeup|original-writer|producer|set-decoration|sound|story|visual-effects|writer)\/.*$/
 // @connect      imdb.com
 // @connect      themoviedb.org
 // @homepageURL  https://github.com/Tetrax-10/imdb-tmdb-letterboxd-linker
@@ -868,6 +869,49 @@ html.k-mobile #linker-parent {
             }
         })
     }
+
+    function letterboxdPersonPageInjector() {
+        commonUtils.waitForElement(`.micro-button[href^="https://www.themoviedb.org/person/"]`, 10000).then(async (element) => {
+            try {
+                // open tmdb link in new tab
+                element.target = "_blank"
+
+                // To make sure other scripts didn't inject imdb link
+                if (document.querySelector(`.micro-button[href^="https://www.imdb.com/name/nm"]`)) return
+
+                // Fetch TMDB ID
+                const tmdbId = element.href?.match(/\/person\/(\d+)\/?/)?.[1] ?? null
+
+                if (tmdbId) {
+                    // Fetch external IDs
+                    const tmdbRawRes = await fetch(`https://api.themoviedb.org/3/person/${tmdbId}?api_key=${TMDB_API_KEY}&append_to_response=external_ids`).catch((error) => {
+                        console.error("Failed to fetch external IDs from TMDB:", error)
+                    })
+                    if (!tmdbRawRes) return
+
+                    // Extract IMDb ID
+                    const tmdbRes = await tmdbRawRes.json()
+                    const imdbId = tmdbRes["external_ids"]["imdb_id"] || null
+
+                    if (imdbId && !document.querySelector(`.micro-button[href^="https://www.imdb.com/name/nm"]`)) {
+                        // create IMDb element
+                        const imdbElement = element.cloneNode(true)
+                        imdbElement.href = `https://www.imdb.com/name/${imdbId}`
+                        imdbElement.innerText = "IMDB"
+                        imdbElement.target = "_blank"
+                        imdbElement.setAttribute("data-track-action", "IMDb")
+                        imdbElement.style.marginRight = "5px"
+
+                        // inject IMDb element
+                        element.parentElement.insertBefore(imdbElement, element)
+                    }
+                }
+            } catch (error) {
+                console.error("Error in letterboxdPersonPageInjector:", error)
+            }
+        })
+    }
+
     const currentURL = location.protocol + "//" + location.hostname + location.pathname
 
     if (/^(https?:\/\/[^.]+\.imdb\.com\/title\/tt[^\/]+(?:\/\?.*)?\/?)$/.test(currentURL)) {
@@ -890,5 +934,12 @@ html.k-mobile #linker-parent {
         // Letterboxd title page
         GM_addStyle(letterboxdTitlePageCss)
         letterboxdTitlePageInjector()
+    } else if (
+        /^(https?:\/\/letterboxd\.com\/(actor|additional-photography|camera-operator|cinematography|composer|costume-design|director|editor|executive-producer|hairstyling|makeup|original-writer|producer|set-decoration|sound|story|visual-effects|writer)\/[A-Za-z0-9-_]+(?:\/(by|language|country|decade|genre|on|year)\/[A-Za-z0-9-_\/]+)?\/(?:page\/\d+\/?)?)$/.test(
+            currentURL
+        )
+    ) {
+        // Letterboxd person page
+        letterboxdPersonPageInjector()
     }
 })()
