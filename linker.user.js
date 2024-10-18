@@ -886,7 +886,7 @@ html.k-mobile #linker-parent {
         // TMDB person page
         GM_addStyle(tmdbPersonPageCss)
         tmdbPersonPageInjector()
-    } else if (/^(https?:\/\/letterboxd\.com\/film\/[^\/]+(?:\/\?.*)?\/?(crew|details|genres)?)$/.test(currentURL)) {
+    } else if (/^(https?:\/\/letterboxd\.com\/film\/[^\/]+\/?(crew|details|releases|genres)?\/)$/.test(currentURL)) {
         // Letterboxd title page
         GM_addStyle(letterboxdTitlePageCss)
         letterboxdTitlePageInjector()
