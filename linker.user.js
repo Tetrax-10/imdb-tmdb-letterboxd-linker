@@ -3,7 +3,7 @@
 // @description  Opens the corresponding IMDb, TMDB, or Letterboxd page for movies, TV shows and people with a single click. Additionally, it also displays IMDb ratings on both TMDB and Letterboxd pages.
 // @author       Tetrax-10
 // @namespace    https://github.com/Tetrax-10/imdb-tmdb-letterboxd-linker
-// @version      2.3
+// @version      2.4
 // @license      MIT
 // @match        *://*.imdb.com/title/tt*
 // @match        *://*.imdb.com/name/nm*
@@ -454,7 +454,7 @@ html.k-mobile #linker-parent {
         const dividerElement = commonUtils.element.createDividerElement()
         const loadingElement = commonUtils.element.createLoadingElement()
 
-        const rootElementSelector = "div:has( > div[data-testid='hero-rating-bar__user-rating'])"
+        const rootElementSelector = 'section.ipc-page-section[data-testid="hero-parent"] > div:nth-child(2) > div:nth-child(2) > div'
 
         window.addEventListener("load", () => {
             try {
