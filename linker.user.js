@@ -3,7 +3,7 @@
 // @description  Opens the corresponding IMDb, TMDB, or Letterboxd page for movies, TV shows and people with a single click. Additionally, it also displays IMDb ratings on both TMDB and Letterboxd pages.
 // @author       Tetrax-10
 // @namespace    https://github.com/Tetrax-10/imdb-tmdb-letterboxd-linker
-// @version      2.4
+// @version      2.5
 // @license      MIT
 // @match        *://*.imdb.com/title/tt*
 // @match        *://*.imdb.com/name/nm*
@@ -454,13 +454,16 @@ html.k-mobile #linker-parent {
         const dividerElement = commonUtils.element.createDividerElement()
         const loadingElement = commonUtils.element.createLoadingElement()
 
-        const rootElementSelector = 'section.ipc-page-section[data-testid="hero-parent"] > div:nth-child(2) > div:nth-child(2) > div'
+        const mobileSelector = 'section.ipc-page-section[data-testid="hero-parent"] > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div > div'
+        const desktopSelector = 'section.ipc-page-section[data-testid="hero-parent"] > div:nth-child(2) > div:nth-child(2) > div'
+
+        const rootElementSelector = isMobile ? mobileSelector : desktopSelector
 
         window.addEventListener("load", () => {
             try {
-                commonUtils.waitForElement(rootElementSelector, 10000, isMobile ? 2 : 1).then((element) => {
+                commonUtils.waitForElement(rootElementSelector, 10000).then((element) => {
                     element.insertBefore(parentContainer, element.firstChild)
-                    imdbPageUtils.element.mirrorElements(parentContainer, isMobile, rootElementSelector)
+                    imdbPageUtils.element.mirrorElements(parentContainer, true, isMobile ? desktopSelector : mobileSelector)
 
                     parentContainer.appendChild(letterboxdElement)
                     parentContainer.appendChild(dividerElement)
@@ -475,13 +478,13 @@ html.k-mobile #linker-parent {
         // inject parent element if not present
         function injectParentElement() {
             try {
-                if (!document.querySelectorAll("#linker-parent")[isMobile ? 2 : 1]) {
-                    commonUtils.waitForElement(rootElementSelector, 10000, isMobile ? 2 : 1).then((element) => {
+                if (!document.querySelectorAll("#linker-parent")[isMobile ? 1 : 0]) {
+                    commonUtils.waitForElement(rootElementSelector, 10000).then((element) => {
                         element.insertBefore(parentContainer, element.firstChild)
                     })
                 }
-                if (!document.querySelectorAll("#linker-parent")[!isMobile ? 2 : 1]) {
-                    imdbPageUtils.element.mirrorElements(parentContainer, isMobile, rootElementSelector)
+                if (!document.querySelectorAll("#linker-parent")[isMobile ? 0 : 1]) {
+                    imdbPageUtils.element.mirrorElements(parentContainer, true, isMobile ? desktopSelector : mobileSelector)
                 }
             } catch (error) {
                 console.error("Failed to inject parent element", error)
@@ -555,12 +558,12 @@ html.k-mobile #linker-parent {
         // inject parent element if not present
         function injectParentElement() {
             try {
-                if (!document.querySelector("#linker-parent")) {
+                if (!document.querySelectorAll("#linker-parent")[isMobile ? 1 : 0]) {
                     commonUtils.waitForElement(rootElementSelector, 10000, isMobile ? 2 : 1).then((element) => {
                         element.insertBefore(parentContainer, element.firstChild)
                     })
                 }
-                if (!document.querySelectorAll("#linker-parent")[!isMobile ? 2 : 1]) {
+                if (!document.querySelectorAll("#linker-parent")[isMobile ? 0 : 1]) {
                     imdbPageUtils.element.mirrorElements(parentContainer, isMobile, rootElementSelector)
                 }
             } catch (error) {
